@@ -1,397 +1,1385 @@
-Markdown
+```markdown
 
-````
-# Résumé des concepts clés du cours
+# Guide Récapitulatif et Aide-Mémoire Rust (AProg - HES-SO)
+
+  
+
+Ce document récapitule l'ensemble du cours **Advanced Programming (AProg)**. Il est conçu comme un **aide-mémoire complet** pour vous accompagner pendant vos exercices et laboratoires de programmation en Rust.
+
+  
 
 ---
 
-## 1. Bases & Syntaxe Rust
+  
 
-### Modèle mémoire : Stack vs Heap
-- **Stack (Pile) :**
-  - Accès très rapide, taille fixe connue à la compilation.
-  - Libération automatique lorsque la variable sort du scope.
-- **Heap (Tas) :**
-  - Données à taille dynamique ou durée de vie flexible.
-  - Allocation et désallocation explicites (gérées par le système d'ownership de Rust sans Garbage Collector).
+## Table des Matières
 
-### Variables, Mutabilité & Shadowing
-- **Immutabilité par défaut :** En Rust, `let x = 5;` rend `x` immuable.
-- **Mutabilité :** On utilise `let mut x = 5;` pour autoriser les modifications.
-- **Shadowing (Masquage) :** On peut redéclarer une variable avec le même nom (`let x = x + 1;` ou `let x = x.to_string();`), ce qui permet d'en changer éventuellement le type tout en réutilisant l'identifiant.
+1. [Configuration, Outils & Git Workflow](#1-configuration-outils--git-workflow)
+
+2. [Bases du Langage & Syntaxe Impérative](#2-bases-du-langage--syntaxe-impérative)
+
+3. [Types Primitifs, Littéraux et Conversions](#3-types-primitifs-littéraux-et-conversions)
+
+4. [Gestion de la Mémoire : Stack, Heap, Directives de Propriété (Ownership)](#4-gestion-de-la-mémoire--stack-heap-directives-de-propriété-ownership)
+
+5. [Contrôle de Flux & Pattern Matching](#5-contrôle-de-flux--pattern-matching)
+
+6. [Types Composés et Collections](#6-types-composés-et-collections)
+
+7. [Gestion des Erreurs : Option et Result](#7-gestion-des-erreurs--option-et-result)
+
+8. [Programmation Orientée Objet (OOP) & Design en Rust](#8-programmation-orientée-objet-oop--design-en-rust)
+
+9. [Traits Standard & Patrons de Conception (Design Patterns)](#9-traits-standard--patrons-de-conception-design-patterns)
+
+10. [Concurrence et Async/Await](#10-concurrence-et-asyncawait)
+
+11. [Pointeurs Intelligents (Smart Pointers)](#11-pointeurs-intelligents-smart-pointers)
+
+12. [Tests, Débogage, Documentation & Profilage](#12-tests-débogage-documentation--profilage)
+
+  
+
+---
+
+  
+
+## 1. Configuration, Outils & Git Workflow
+
+  
+
+### Convention de Commits Git (Conventional Commits)
+
+Format : `<type>(<scope>): <description>`
+
+  
+
+| Type | Utilisation |
+
+| :--- | :--- |
+
+| `feat` | Nouvelle fonctionnalité / comportement |
+
+| `fix` | Correction de bug |
+
+| `docs` | Modifications de la documentation uniquement |
+
+| `style` | Formatage / cosmétique (aucun changement logique) |
+
+| `refactor` | Amélioration du code sans modifier le comportement |
+
+| `test` | Ajout ou modification de tests |
+
+| `chore` | Tâches de build, CI, configuration |
+
+| `perf` | Amélioration des performances |
+
+  
+
+**Workflow de rendu :**
+
+```bash
+
+git add .
+
+git commit -m "feat(ex03): implement temperature converter"
+
+git tag exercises-03
+
+git push && git push --tags
+
+  
+
+```
+
+  
+
+### Commandes de la Chaîne d'Outils (Cargo & Rustup)
+
+  
+
+* `rustup update` : Mettre à jour la chaîne d'outils Rust.
+
+* `cargo new my_app` : Créer un nouveau projet binaire.
+
+* `cargo new --lib my_lib` : Créer un projet sous forme de bibliothèque.
+
+* `cargo build` / `cargo build --release` : Compiler en mode Debug ou Release (optimisé).
+
+* `cargo run` : Compiler et exécuter le binaire.
+
+* `cargo check` : Vérifier la typographie et la syntaxe rapidement sans générer de binaire.
+
+* `cargo test` : Exécuter l'ensemble des tests (unitaires, d'intégration, doc-tests).
+
+* `cargo fmt` : Formater le code selon les normes canoniques.
+
+* `cargo clippy` : Exécuter le linter statique avancée.
+
+* `cargo doc --open` : Générer et ouvrir la documentation HTML du projet.
+
+  
+
+---
+
+  
+
+## 2. Bases du Langage & Syntaxe Impérative
+
+  
+
+### Conventions de Nommage
+
+  
+
+* **Variables, Fonctions, Modules** : `snake_case` (ex: `sensor_value`, `read_sensor()`)
+
+* **Constantes, Statics** : `SCREAMING_SNAKE_CASE` (ex: `MAX_RETRIES`)
+
+* **Types, Structs, Enums, Traits** : `UpperCamelCase` (ex: `TemperatureSensor`, `SensorState`)
+
+  
 
 ### Constantes vs Variables
-- Déclarées avec le mot-clé `const` (`const MAX_POINTS: u32 = 100;`).
-- Le type **doit** être explicitement annoté.
-- Évaluées à la compilation et inlinées à chaque utilisation.
 
----
+  
 
-## 2. Types Primitifs & Composés
+* `const` : Évaluée à la compilation, inlinée (zéro coût à l'exécution), portée globale possible, type obligatoire.
 
-### Types scalaires
-- **Entiers :** Signés (`i8`, `i16`, `i32`, `i64`, `i128`, `isize`) et non signés (`u8`, `u16`, `u32`, `u64`, `u128`, `usize`).
-- **Flottants :** `f32` et `f64`.
-- **Booléens :** `bool` (`true`, `false`).
-- **Caractères :** `char` (scalaires Unicode sur 4 octets, ex: `'a'`, `'é'`, `'🦀'`).
+* `let` : Liaison à l'exécution, stockée sur la Stack, immuable par défaut.
 
-### Formattage de chaînes
-- `println!`, `print!`, `format!`
-- **Placeholders :**
-  - Affichage standard : `{}` (requiert le trait `Display`)
-  - Formattage de débogage : `{:?}` (requiert le trait `Debug`)
-  - Spécificateurs de précision et alignement : `{:>8}`, `{:08.2}`, `{:#x}` (hexadécimal).
+* `let mut` : Rend la liaison réassignable.
 
-### Tuples
-- Groupes fixes de valeurs de types potentiellement différents : `let pt: (i32, f64) = (10, 3.14);`
-- Accès par indice : `pt.0`, `pt.1` ou par déstructuration : `let (x, y) = pt;`.
+  
 
-### Collections de la bibliothèque standard (`std::collections`)
-- **Tableaux fixes (`[T; N]`) :** Taille fixe allouée sur la stack (ex: `[i32; 5]`).
-- **Vecteurs (`Vec<T>`) :** Liste dynamique allouée sur le heap (ex: `vec![1, 2, 3]`).
-- **Maps :**
-  - `HashMap<K, V>` : Clé-valeur à accès rapide ($O(1)$ moyen), ordre non garanti.
-  - `BTreeMap<K, V>` : Clé-valeur ordonnée par les clés.
-- **Sets :** `HashSet<T>` et `BTreeSet<T>` pour garantir l'unicité des éléments.
-- **Files d'attente :** `VecDeque<T>` pour les structures FIFO/LIFO efficaces aux deux extrémités.
-
----
-
-## 3. Structure de Contrôle & Fonctions
-
-### Structure d'une fonction
 ```rust
-fn nom_fonction(param1: Type1, param2: Type2) -> TypeRetour {
-    // La dernière expression sans point-virgule est la valeur de retour
-    param1 + param2
+
+const MAX_SCORE: u32 = 100_000; // Type obligatoire
+
+const SECS_PER_DAY: u64 = 60 * 60 * 24; // Constante calculée
+
+  
+
+fn main() {
+
+    let x = 5; // Immuable par défaut
+
+    let mut count = 0_u32; // Mutable
+
+    count += 1;
+
+    // Shadowing : Réutilisation du nom + possibilité de changer de type
+
+    let spaces = "   ";
+
+    let spaces = spaces.len(); // spaces devient un usize (valeur 3)
+
 }
-````
 
-### Structures de contrôle
+  
 
-- **`if / else` :** `if` est une expression et peut retourner une valeur (`let x = if cond { 1 } else { 2 };`).
-    
-      
-    
-- **`match` :** Pattern matching exhaustif.
-    
-      
-    
-- **`if let` & `let else` :**
-    
-      
-    - `if let Some(v) = option { ... }` : Traitement concis d'un seul cas.
-        
-          
-        
-    - `let Ok(val) = resultat else { return; };` : Destructuration précoce ou sortie de bloc.
-        
-          
-        
-- **Boucles :**
-    
-      
-    - `loop` (peut retourner une valeur via `break val;`)
-        
-          
-        
-    - `while` et `while let`
-        
-          
-        
-    - `for item in collection` (avec adaptateurs comme `.enumerate()`, `.zip()`, `.rev()`, `.step_by()`).
-        
-          
-        
+```
 
-## 4. Ownership, Borrowing & Lifetimes
+  
 
-### Les 3 règles d'Ownership (Propriété)
+### Ignorer des valeurs (`_` vs `_nom`)
 
-1. Chaque valeur dans Rust a un propriétaire (_owner_).
-    
-      
-    
+  
+
+* `let _ = func();` : La valeur retournée est immédiatement détruite (dropped).
+
+* `let _guard = func();` : La valeur reste vivante jusqu'à la fin de la portée, mais le warning d'inutilisation est masqué.
+
+  
+
+---
+
+  
+
+## 3. Types Primitifs, Littéraux et Conversions
+
+  
+
+### Littéraux Numériques
+
+  
+
+* Décinaux : `98_222`
+
+* Hexadécimaux (`0x`) : `0xFF`
+
+* Octaux (`0o`) : `0o77`
+
+* Binaires (`0b`) : `0b1111_0000`
+
+* Octet ASCII : `b'A'` (Type `u8`, valeur `65`)
+
+  
+
+### Types Scalaires Standard
+
+  
+
+* **Entiers Signés** : `i8`, `i16`, `i32` (par défaut), `i64`, `i128`, `isize` (dépend de l'architecture).
+
+* **Entiers Non-Signés** : `u8`, `u16`, `u32`, `u64`, `u128`, `usize` (indices de collections).
+
+* **Flottants** : `f32`, `f64` (par défaut).
+
+* **Booléens** : `bool` (`true`, `false`).
+
+* **Caractère** : `char` (Scalar Unicode, 4 octets, ex: `'A'`, `'é'`, `'🦀'`).
+
+* **Type Unité** : `()` (Tuple vide, zéro octet, indique l'absence de valeur de retour).
+
+  
+
+### Gestion du Débordement d'Entiers (Overflow)
+
+  
+
+En mode `debug`, un overflow provoque un panic. En mode `release`, il effectue un saut circulaire (*wrap*).
+
+Méthodes explicites :
+
+  
+
+```rust
+
+let x: u8 = 255;
+
+x.wrapping_add(1);   // Succès : retourne 0
+
+x.saturating_add(1); // Clampe la valeur à la limite : retourne 255
+
+x.checked_add(1);    // Retourne un Option : None
+
+x.overflowing_add(1);// Retourne un tuple : (0, true)
+
+  
+
+```
+
+  
+
+### Conversion de Types
+
+  
+
+* **Cast explicite avec `as**` : Rapide, mais potentiellement destructeur (tronquage lors du passage d'un grand type vers un plus petit, ex: `300_i32 as u8` donne `44`). À utiliser en toute sécurité uniquement pour les élargissements (`u8 as u32`).
+
+* **Traits `From` / `Into**` : Conversion infaillible (ex: `String::from("hello")` ou `"hello".into()`).
+
+* **Traits `TryFrom` / `TryInto**` : Conversion faillible retournant un `Result` (ex: `u8::try_from(300_i32)` renvoie une `Err`).
+
+  
+
+---
+
+  
+
+## 4. Gestion de la Mémoire : Stack, Heap, Directives de Propriété (Ownership)
+
+  
+
+### Memory Allocation
+
+  
+
+* **Stack (Pile)** : Rapide, taille fixe déterminée à la compilation. Stocke les variables locales des fonctions. Nettoyage automatique en fin de portée (RAII).
+
+* **Heap (Tas)** : Taille dynamique, allocation et libération explicites (gérées automatiquement par Rust sans Garbage Collector).
+
+  
+
+```
+
+Stack                     Heap
+
++-----------------+       +-------------------+
+
+| ptr -----------+------> | "Hello World"     |
+
+| len: 11         |       +-------------------+
+
+| cap: 11         |
+
++-----------------+
+
+  
+
+```
+
+  
+
+### Les 3 Règles d'Or de l'Ownership
+
+  
+
+1. Chaque valeur en Rust possède un propriétaire (*owner*).
+
 2. Il ne peut y avoir qu'un seul propriétaire à la fois.
-    
-      
-    
-3. Quand le propriétaire sort du scope (`drop`), la mémoire de la valeur est libérée.
-    
-      
-    
+
+3. Quand le propriétaire sort de la portée (*scope*), la valeur est automatiquement libérée (`drop`).
+
+  
 
 ### Move vs Copy
 
-- **Move :** Transfert de propriété (par défaut pour les types alloués dynamiquement comme `String` ou `Vec`). L'ancienne variable devient inutilisable.
-    
-      
-    
-- **Copy :** Duplication bit à bit implicite pour les types scalaires de taille fixe (`i32`, `f64`, `bool`, `char`, tuples de types `Copy`).
-    
-      
-    
+  
 
-### Règles du Borrowing (Emprunt)
+* **Types `Copy**` : Types simples stockés uniquement sur la Stack (`i32`, `f64`, `bool`, `char`, tuples de types `Copy`). L'affectation duplique la valeur.
 
-- On peut avoir **soit** un nombre illimité de références immuables (`&T`), **soit** une seule référence mutable (`&mut T`) à un instant donné.
-    
-      
-    
-- Les références doivent toujours être valides (absence de pointeurs pendants / _dangling pointers_).
-    
-      
-    
-
-### Lifetimes (`'a`)
-
-- Les lifetimes sont des annotations (`'a`) aidant le compilateur à vérifier qu'une référence ne vit pas plus longtemps que la donnée qu'elle pointe.
-    
-      
-    
-- Souvent inférées par le compilateur (_lifetime elision_), mais requises explicitement dans les signatures de fonctions retournant des références issues de plusieurs entrées.
-    
-      
-    
-
-## 5. Types Définis par l'Utilisateur & Programmation Orientée Objet (POO)
-
-### POO en Rust vs Langages Classiques (C++/Java)
-
-Rust n'a pas de classes ni d'héritage de structures. Il sépare les données (`struct`, `enum`) des comportements (`impl`, `trait`).
+* **Types `Move**` : Types gérant des ressources Heap (`String`, `Vec<T>`, structs personnalisés par défaut). L'affectation transfère la propriété ; l'ancienne variable devient invalide.
 
   
 
-|**Concept POO Classique**|**Équivalent Rust**|
-|---|---|
-|Classe|`struct` / `enum` + bloc `impl`|
-|Objet / Instance|Instance d'une `struct` ou `enum`|
-|Encapsulation|Modules (`mod`) et visibilité `pub`|
-|Interface / Abstract Class|`trait`|
-|Héritage|Remplacé par la composition et les `traits`|
+```rust
 
-### Structs & Enums
+// Types Copy
 
-- **`struct` :**
-    
-      
-    
-    Rust
-    
-    ```
-    struct Sensor {
-        id: u32,
-        value: f64,
-    }
-    ```
-    
-- **`enum` avec données :**
-    
-      
-    
-    Rust
-    
-    ```
-    enum Status {
-        Active(u32),
-        Inactive,
-        Error(String),
-    }
-    ```
-    
+let a = 42;
 
-### Méthodes & Récepteur `self`
-
-Dans un bloc `impl StructName` :
+let b = a; // Duplication : 'a' et 'b' sont utilisables
 
   
 
-- `&self` : Emprunt immuable (lecture seule).
-    
-      
-    
-- `&mut self` : Emprunt mutable (modification).
-    
-      
-    
-- `self` : Prise de possession (consommation de l'objet).
-    
-      
-    
-- Sans récepteur `self` : Fonction associée (ex: constructeur `new()`).
-    
-      
-    
+// Types Move
 
-### Gestion d'erreurs & Valeurs Optionnelles
+let s1 = String::from("hello");
 
-- **`Option<T>` :** `Some(T)` ou `None` (remplace l'absence de `null`).
-    
-      
-    
-- **`Result<T, E>` :** `Ok(T)` ou `Err(E)` pour les opérations pouvant échouer.
-    
-      
-    
-- **Extraction :**
-    
-      
-    - `unwrap()` / `expect("msg")` : Extrait la valeur ou fait paniquer le programme.
-        
-          
-        
-    - Opérateur `?` : Propage l'erreur/absence à la fonction appelante.
-        
-          
-        
-    - `unwrap_or(default)` / `unwrap_or_else(closure)` : Gestion sécurisée avec valeur de repli.
-        
-          
-        
+let s2 = s1; // Transfert de propriété (Move)
 
-## 6. Abstraction & Polymorphisme (Traits)
-
-### Traits (Contrats d'interface)
-
-Un `trait` définit un ensemble de méthodes qu'un type doit implémenter.
+// println!("{s1}"); // ERREUR DE COMPILATION : s1 n'est plus valide
 
   
-
-Rust
 
 ```
-trait Drawable {
-    fn draw(&self) -> String; // Méthode abstraite
-    fn show(&self) {          // Méthode par défaut
-        println!("{}", self.draw());
-    }
+
+  
+
+### Règles de l'Emprunt (Borrowing & References)
+
+  
+
+1. Vous pouvez avoir soit **un nombre illimité de références immuables (`&T`)**, soit **exactement une référence mutable (`&mut T`)** à un instant donné.
+
+2. Les références doivent toujours être valides (absence de pointeurs pendants / *dangling pointers*).
+
+  
+
+```rust
+
+let mut s = String::from("hello");
+
+  
+
+let r1 = &s; // OK
+
+let r2 = &s; // OK
+
+println!("{r1} et {r2}");
+
+  
+
+let m = &mut s; // OK : r1 et r2 ne sont plus utilisés après ce point
+
+m.push_str(", world!");
+
+  
+
+```
+
+  
+
+### Durées de Vie (Lifetimes `'a`)
+
+  
+
+Les durées de vie sont des annotations à la compilation garantissant qu'une référence ne survit pas à sa donnée source.
+
+  
+
+```rust
+
+// 'a indique que le résultat est valide aussi longtemps que in1 ET in2 restent valides
+
+fn longest<'a>(in1: &'a str, in2: &'a str) -> &'a str {
+
+    if in1.len() > in2.len() { in1 } else { in2 }
+
 }
-```
-
-### Dispatch Statique vs Dynamique
-
-|**Critère**|**Dispatch Statique (Generics / impl Trait)**|**Dispatch Dynamique (Trait Objects)**|
-|---|---|---|
-|**Syntaxe**|`fn show<T: Drawable>(item: &T)` ou `fn show(item: &impl Drawable)`|`fn show(item: &dyn Drawable)` ou `Box<dyn Drawable>`|
-|**Résolution**|À la compilation (_Monomorphization_)|À l'exécution via une _vtable_|
-|**Performance**|Maximale (inlinable, zéro surcoût)|Légère indirection (pointeur vtable)|
-|**Collections**|Homogènes (un seul type concret par collection)|Hétérogènes (`Vec<Box<dyn Drawable>>`)|
-
-## 7. Traits de la Bibliothèque Standard & Design Patterns
-
-### Traits dérivables usuels (`#[derive(...)]`)
-
-- `Debug` / `Display` : Formattage textuel.
-    
-      
-    
-- `Clone` / `Copy` : Duplication des valeurs.
-    
-      
-    
-- `Default` : Fournit une valeur par défaut (`Type::default()`).
-    
-      
-    
-- `PartialEq`, `Eq`, `PartialOrd`, `Ord`, `Hash` : Égalité, comparaison, tri et hachage.
-    
-      
-    
-
-### Design Patterns Idiomatiques en Rust
-
-1. **Newtype Pattern :** Envelopper un type existant (`struct Meters(f64);`) pour garantir la sécurité au niveau des types sans surcoût à l'exécution.
-    
-      
-    
-2. **RAII / Drop :** Libération automatique des ressources (fichiers, sockets) à la sortie du scope via le trait `Drop`.
-    
-      
-    
-3. **Builder Pattern :** Construction étape par étape d'objets complexes.
-    
-      
-    
-4. **Strategy Pattern :** Interchangeabilité des algorithmes via les traits.
-    
-      
-    
-
-## 8. Concurrence & Smart Pointers
-
-### Processus vs Threads
-
-- **Processus :** Instance isolée d'un programme avec son propre espace mémoire.
-    
-      
-    
-- **Thread :** Fil d'exécution au sein d'un processus, partageant la mémoire du processus.
-    
-      
-    
-
-### Les garanties de Rust (_Fearless Concurrency_)
-
-Rust empêche les _Data Races_ (accès concurrents non synchronisés dont au moins un est une écriture) à la compilation grâce aux règles d'ownership et aux traits marqueurs :
 
   
 
-- **`Send` :** Indique qu'un type peut être transféré d'un thread à un autre.
-    
-      
-    
-- **`Sync` :** Indique qu'un type peut être partagé entre plusieurs threads via des références (`&T`).
-    
-      
-    
+```
 
-### Panorama des Smart Pointers
+  
 
-|**Smart Pointer**|**Cas d'usage principal**|**Thread-Safe ?**|
-|---|---|---|
-|**`Box<T>`**|Allocation sur le heap, propriété unique|Oui (si `T: Send`)|
-|**`Rc<T>`**|Propriété partagée (comptage de références)|**Non** (mono-thread)|
-|**`Arc<T>`**|Propriété partagée atomique|**Oui** (multi-thread)|
-|**`Cell<T>`**|Mutabilité intérieure pour types `Copy`|**Non**|
-|**`RefCell<T>`**|Mutabilité intérieure avec vérification des emprunts à l'exécution|**Non**|
-|**`Mutex<T>` / `RwLock<T>`**|Mutabilité intérieure synchronisée pour accès exclusif / lecteur-rédacteur|**Oui**|
+---
 
-### Communication entre Threads
+  
 
-- **Message Passing :** Préférer la transmission de messages via des canaux (`mpsc::channel`) plutôt que le partage de mémoire explicite (« _Do not communicate by sharing memory; instead, share memory by communicating_ »).
-    
-      
-    
+## 5. Contrôle de Flux & Pattern Matching
 
-## 9. Débogage, Tests & Qualité de Code
+  
 
-### Structuration des tests
+### `if` est une Expression
 
-- **Tests unitaires :** Placés dans le même fichier que le code source sous le module `#[cfg(test)] mod tests`.
-    
-      
-    
-- **Tests d'intégration :** Fichiers situés dans le dossier `tests/` testant l'API publique de la crate.
-    
-      
-    
-- **Doc-tests :** Exemples de code dans les commentaires de documentation (`///`) exécutés par `cargo test`.
-    
-      
-    
+  
 
-### Outils de l'écosystème Cargo
+```rust
 
-- `cargo check` : Vérification rapide des types sans générer le binaire.
-    
-      
-    
-- `cargo fmt` : Formattage automatique du code selon les conventions Rust.
-    
-      
-    
-- `cargo clippy` : Linter avancé identifiant les constructions non-idiomatiques ou à risque.
-    
-      
-    
-- `cargo doc --open` : Génération automatique de la documentation HTML interactive.
+let x = -7;
+
+let abs_x = if x < 0 { -x } else { x }; // Les deux branches doivent renvoyer le même type
+
+  
+
+```
+
+  
+
+### Pattern Matching (`match`)
+
+  
+
+Le bloc `match` doit être **exhaustif**.
+
+  
+
+```rust
+
+let day = 3;
+
+let name = match day {
+
+    1 => "Lundi",
+
+    2 => "Mardi",
+
+    3 => "Mercredi",
+
+    4 | 5 => "Jeudi ou Vendredi",
+
+    6..=7 => "Weekend",
+
+    _ => "Invalide", // Joker obligatoire si toutes les valeurs ne sont pas couvertes
+
+};
+
+  
+
+```
+
+  
+
+### Destruction Conditionnelle (`if let` & `let else`)
+
+  
+
+```rust
+
+let maybe_num: Option<i32> = Some(42);
+
+  
+
+// if let : Exécute le code uniquement si le pattern correspond
+
+if let Some(n) = maybe_num {
+
+    println!("Valeur : {n}");
+
+}
+
+  
+
+// let else : Extrait la valeur ou diverge (return/break/panic) dans la branche else
+
+fn process(val: Option<i32>) -> i32 {
+
+    let Some(n) = val else {
+
+        return 0; // Obligation de diverger
+
+    };
+
+    n * 2
+
+}
+
+  
+
+```
+
+  
+
+### Boucles (`loop`, `while`, `for`)
+
+  
+
+```rust
+
+// loop avec valeur de retour
+
+let mut counter = 0;
+
+let result = loop {
+
+    counter += 1;
+
+    if counter == 10 {
+
+        break counter * 2; // Retourne 20
+
+    }
+
+};
+
+  
+
+// Iterateurs et Ranges dans for
+
+for i in 0..5 { /* [0, 4] */ }
+
+for i in 1..=5 { /* [1, 5] */ }
+
+  
+
+let items = ["a", "b", "c"];
+
+for (idx, val) in items.iter().enumerate() {
+
+    println!("{idx}: {val}");
+
+}
+
+  
+
+```
+
+  
+
+---
+
+  
+
+## 6. Types Composés et Collections
+
+  
+
+### Chaines de Caractères (`&str` vs `String`)
+
+  
+
+* `&str` : Tranche de chaîne (*String slice*), vue immuable empruntée (souvent stockée dans le binaire ou sur la Heap).
+
+* `String` : Texte encodé en UTF-8, modifiable, possédée et stockée sur la Heap.
+
+  
+
+```rust
+
+let mut s: String = String::from("Hello");
+
+s.push_str(" World");
+
+let slice: &str = &s[0..5]; // Contient "Hello"
+
+  
+
+```
+
+  
+
+### Tableau Fixe (`[T; N]`) et Tranche (`&[T]`)
+
+  
+
+Taille fixe connue à la compilation, données contiguës en mémoire.
+
+  
+
+```rust
+
+let arr: [i32; 4] = [10, 20, 30, 40];
+
+let slice: &[i32] = &arr[1..3]; // Tranche contenant [20, 30]
+
+  
+
+```
+
+  
+
+### Vecteur (`Vec<T>`)
+
+  
+
+Liste dynamique stockée sur la Heap.
+
+  
+
+```rust
+
+let mut vec = vec![1, 2, 3];
+
+vec.push(4);
+
+let item: Option<&i32> = vec.get(10); // Accès sécurisé évitant les panics
+
+  
+
+```
+
+  
+
+### Tables de Hachage (`HashMap<K, V>` & `BTreeMap<K, V>`)
+
+  
+
+* `HashMap` : Accès rapide en $O(1)$, ordre non garanti.
+
+* `BTreeMap` : Éléments triés selon les clés.
+
+  
+
+```rust
+
+use std::collections::HashMap;
+
+  
+
+let mut map = HashMap::new();
+
+map.insert("T1", 23.7);
+
+  
+
+// Pattern idiomatique : insertion ou mise à jour
+
+let counter = map.entry("T1").or_insert(0.0);
+
+*counter += 1.0;
+
+  
+
+```
+
+  
+
+---
+
+  
+
+## 7. Gestion des Erreurs : Option et Result
+
+  
+
+Rust n'utilise pas de pointeurs nuls ni d'exceptions, mais deux enums clés :
+
+  
+
+### Enum `Option<T>`
+
+  
+
+Représente la présence (`Some(T)`) ou l'absence (`None`) d'une valeur.
+
+  
+
+```rust
+
+enum Option<T> {
+
+    Some(T),
+
+    None,
+
+}
+
+  
+
+```
+
+  
+
+### Enum `Result<T, E>`
+
+  
+
+Représente le succès (`Ok(T)`) ou l'échec (`Err(E)`).
+
+  
+
+```rust
+
+enum Result<T, E> {
+
+    Ok(T),
+
+    Err(E),
+
+}
+
+  
+
+```
+
+  
+
+### Boîte à Outils pour Extraire ou Propager
+
+  
+
+```rust
+
+// 1. L'opérateur '?' : Propage l'erreur/None à la fonction appelante
+
+fn parse_number(s: &str) -> Result<u32, std::num::ParseIntError> {
+
+    let n = s.trim().parse::<u32>()?; // Retourne immédiatement si Err
+
+    Ok(n)
+
+}
+
+  
+
+// 2. Traitement sécurisé avec valeurs par défaut
+
+let val = opt.unwrap_or(0);                  // Valeur par défaut basique
+
+let val = opt.unwrap_or_else(|| compute());  // Valeur par défaut calculée paresseusement
+
+let val = opt.unwrap_or_default();           // Valeur par défaut du trait Default
+
+  
+
+// 3. Extraction forcée (À ÉVITER en code de production)
+
+let val = opt.unwrap();         // Crash/Panic si None/Err
+
+let val = opt.expect("Message");// Crash avec message d'erreur explicite
+
+  
+
+```
+
+  
+
+---
+
+  
+
+## 8. Programmation Orientée Objet (OOP) & Design en Rust
+
+  
+
+En Rust, l'OOP s'articule autour de la séparation des données (`struct`) et du comportement (`impl`), combinés aux `traits`.
+
+  
+
+### Struct et Impl
+
+  
+
+```rust
+
+pub struct Rectangle {
+
+    width: f64,
+
+    height: f64,
+
+}
+
+  
+
+impl Rectangle {
+
+    // Constructeur associé (pas de self)
+
+    pub fn new(width: f64, height: f64) -> Self {
+
+        Self { width, height }
+
+    }
+
+  
+
+    // Méthode de lecture (&self)
+
+    pub fn area(&self) -> f64 {
+
+        self.width * self.height
+
+    }
+
+  
+
+    // Méthode de modification (&mut self)
+
+    pub fn scale(&mut self, factor: f64) {
+
+        self.width *= factor;
+
+        self.height *= factor;
+
+    }
+
+  
+
+    // Méthode consommant l'objet (self)
+
+    pub fn destroy(self) { /* L'objet est libéré ici */ }
+
+}
+
+  
+
+```
+
+  
+
+### Les 4 Piliers OOP en Rust
+
+  
+
+| Pilier Classic | Équivalent Rust |
+
+| --- | --- |
+
+| **Encapsulation** | Modules (`mod`) et visibilité `pub` (privé par défaut). |
+
+| **Abstraction** | Traits (contrats d'interfaces sans données). |
+
+| **Héritage** | *Pas d'héritage de structures*. Remplacé par la **Composition** et les **Traits**. |
+
+| **Polymorphisme** | **Génériques** (Dispatch Statique) ou **Trait Objects** (Dispatch Dynamique). |
+
+  
+
+### Encapsulation avec Modue & Visibilité
+
+  
+
+```rust
+
+mod bank {
+
+    pub struct Account {
+
+        owner: String,   // Public
+
+        balance: u64,    // Privé : inaccessible en dehors du module bank
+
+    }
+
+  
+
+    impl Account {
+
+        pub fn new(owner: &str) -> Self {
+
+            Self { owner: owner.into(), balance: 0 }
+
+        }
+
+        pub fn balance(&self) -> u64 { self.balance } // Getter
+
+    }
+
+}
+
+  
+
+```
+
+  
+
+### Abstraction avec Traits
+
+  
+
+```rust
+
+pub trait Drawable {
+
+    fn draw(&self) -> String; // Méthode abstraite
+
+    fn show(&self) {          // Méthode par défaut
+
+        println!("{}", self.draw());
+
+    }
+
+}
+
+  
+
+```
+
+  
+
+### Composition au lieu de l'Héritage
+
+  
+
+```rust
+
+struct Engine { power_kw: u32 }
+
+struct Car {
+
+    engine: Engine, // Car HAS-A Engine (Contient un moteur)
+
+    seats: u8,
+
+}
+
+  
+
+```
+
+  
+
+### Polymorphisme : Static vs Dynamic Dispatch
+
+  
+
+```rust
+
+// 1. Static Dispatch (Génériques & Trait Bounds)
+
+// Génère une version de la fonction par type à la compilation (Monomorphisation, ultra rapide)
+
+fn render_static<T: Drawable>(item: &T) {
+
+    println!("{}", item.draw());
+
+}
+
+  
+
+// 2. Dynamic Dispatch (Trait Objects & vtable)
+
+// Permet de mélanger différents types dans une même collection via des pointeurs gras (data_ptr, vtable_ptr)
+
+fn render_dynamic(items: &[Box<dyn Drawable>]) {
+
+    for item in items {
+
+        println!("{}", item.draw());
+
+    }
+
+}
+
+  
+
+```
+
+  
+
+---
+
+  
+
+## 9. Traits Standard & Patrons de Conception (Design Patterns)
+
+  
+
+### Traits Derivables `#[derive(...)]`
+
+  
+
+* `Debug` (`{:?}`) : Formate le type pour le débogage.
+
+* `Clone` : Permet la duplication explicite via `.clone()`.
+
+* `Copy` : Duplication implicite sur la Stack.
+
+* `PartialEq`, `Eq` : Permet les comparaisons d'égalité (`==`, `!=`).
+
+* `PartialOrd`, `Ord` : Permet les comparaisons d'ordre (`<`, `>`, `.sort()`).
+
+* `Default` : Fournit un constructeur sans arguments (`Type::default()`).
+
+* `Hash` : Permet d'utiliser le type comme clé dans une `HashMap`.
+
+  
+
+### Exemples de Traits Idiomatiques
+
+  
+
+```rust
+
+use std::fmt;
+
+use std::ops::Add;
+
+  
+
+struct Point { x: f64, y: f64 }
+
+  
+
+// Trait Display ({})
+
+impl fmt::Display for Point {
+
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+
+        write!(f, "({}, {})", self.x, self.y)
+
+    }
+
+}
+
+  
+
+// Surcharge d'opérateur '+'
+
+impl Add for Point {
+
+    type Output = Point;
+
+    fn add(self, rhs: Point) -> Point {
+
+        Point { x: self.x + rhs.x, y: self.y + rhs.y }
+
+    }
+
+}
+
+  
+
+```
+
+  
+
+### Design Patterns en Rust
+
+  
+
+1. **Newtype Pattern** : Envelopper un type dans une structure tuple à un champ pour garantir la sécurité des types à coût nul (ex: `struct Meters(f64); struct Seconds(f64);`).
+
+2. **Builder Pattern** : Permet la construction étape par étape de structures complexes sans constructeurs télescopiques.
+
+3. **RAII / Drop** : Libération des ressources (fichiers, verrous) automatiquement exécutée à la fin de la portée dans la méthode `drop(&mut self)`.
+
+4. **Singleton** : Utilisation de `static INSTANCE: OnceLock<T> = OnceLock::new();`.
+
+  
+
+---
+
+  
+
+## 10. Concurrence et Async/Await
+
+  
+
+### Concurrence avec Threads
+
+  
+
+```rust
+
+use std::thread;
+
+use std::time::Duration;
+
+  
+
+let handle = thread::spawn(|| {
+
+    thread::sleep(Duration::from_millis(50));
+
+    42 // Valeur retournée par le thread
+
+});
+
+  
+
+let result = handle.join().unwrap(); // Attend la fin du thread
+
+  
+
+```
+
+  
+
+### Passages de Messages par Canaux (mpsc)
+
+  
+
+Multi-Producer, Single-Consumer : Plusieurs producteurs envoient des données à un seul récepteur.
+
+  
+
+```rust
+
+use std::sync::mpsc;
+
+use std::thread;
+
+  
+
+let (tx, rx) = mpsc::channel();
+
+  
+
+let tx1 = tx.clone();
+
+thread::spawn(move || {
+
+    tx1.send("message du thread 1").unwrap();
+
+});
+
+  
+
+let msg = rx.recv().unwrap(); // Bloque jusqu'à réception
+
+  
+
+```
+
+  
+
+### Modèle Async / Await
+
+  
+
+Utilisé pour les opérations dépendantes des E/S (I/O Bound) à grande échelle.
+
+  
+
+* Les fonctions `async fn` renvoient des `Future` qui sont exécutées de manière paresseuse (*lazy*).
+
+* `.await` suspend la tâche courante sans bloquer le thread sous-jacent.
+
+  
+
+```rust
+
+async fn fetch_data(id: u32) -> String {
+
+    // Simulation d'une attente non-bloquante
+
+    tokio::time::sleep(std::time::Duration::from_millis(100)).await;
+
+    format!("données {id}")
+
+}
+
+  
+
+```
+
+  
+
+---
+
+  
+
+## 11. Pointeurs Intelligents (Smart Pointers)
+
+  
+
+| Type | Thread | Propriété | Usage principal |
+
+| --- | --- | --- | --- |
+
+| **`Box<T>`** | Monothread / Multithread | Unique | Allocation sur la Heap, structures récursives, Trait Objects (`Box<dyn Trait>`). |
+
+| **`Rc<T>`** | Monothread | Partagée | Compteur de références (*Reference Counting*). Plusieurs lecteurs de la même donnée. |
+
+| **`Arc<T>`** | Multithread | Partagée | Atomic Reference Counting (sécurisé entre threads). |
+
+| **`Cell<T>`** | Monothread | Intérieure | Mutabilité intérieure pour les types `Copy` via `get()` / `set()`. |
+
+| **`RefCell<T>`** | Monothread | Intérieure | Mutabilité intérieure avec vérification des règles d'emprunt à l'exécution (`borrow()`, `borrow_mut()`). |
+
+| **`Mutex<T>`** | Multithread | Intérieure | Verrou à exclusion mutuelle. Donne un accès exclusif en écriture à un seul thread. |
+
+| **`RwLock<T>`** | Multithread | Intérieure | Verrou lecture/écriture. Autorise plusieurs lecteurs simultanés OU un écrivain. |
+
+  
+
+### Combinaisons Fréquentes
+
+  
+
+* **Monothread Partagé + Mutable** : `Rc<RefCell<T>>`
+
+* **Multithread Partagé + Mutable** : `Arc<Mutex<T>>`
+
+  
+
+```rust
+
+use std::sync::{Arc, Mutex};
+
+use std::thread;
+
+  
+
+let counter = Arc::new(Mutex::new(0));
+
+let mut handles = vec![];
+
+  
+
+for _ in 0..5 {
+
+    let counter_clone = Arc::clone(&counter);
+
+    let handle = thread::spawn(move || {
+
+        let mut guard = counter_clone.lock().unwrap();
+
+        *guard += 1; // Déverrouillage automatique en fin de portée (RAII)
+
+    });
+
+    handles.push(handle);
+
+}
+
+  
+
+```
+
+  
+
+---
+
+  
+
+## 12. Tests, Débogage, Documentation & Profilage
+
+  
+
+### Structure d'un Test Unitaire
+
+  
+
+```rust
+
+pub fn add(a: i32, b: i32) -> i32 {
+
+    a + b
+
+}
+
+  
+
+#[cfg(test)]
+
+mod tests {
+
+    use super::*;
+
+  
+
+    #[test]
+
+    fn test_add() {
+
+        assert_eq!(add(2, 3), 5);
+
+        assert_ne!(add(2, 3), 6);
+
+    }
+
+  
+
+    #[test]
+
+    #[should_panic(expected = "overflow")]
+
+    fn test_panic() {
+
+        panic!("overflow");
+
+    }
+
+}
+
+  
+
+```
+
+  
+
+### Outils de Débogage & Macro
+
+  
+
+* `println!("val = {val:?}");` : Affichage Debug.
+
+* `dbg!(expr);` : Imprime le fichier, le numéro de ligne, l'expression et sa valeur, puis renvoie la valeur.
+
+  
+
+### Documentation (`rustdoc`)
+
+  
+
+* `///` : Documentation de l'item suivant (fonctions, structs). Les exemples de code inclus sont exécutés lors du `cargo test`.
+
+* `//!` : Documentation du module englobant ou du crate (`lib.rs`).
+
+  
+
+```rust
+
+/// Calcule le carré d'un nombre.
+
+///
+
+/// # Examples
+
+/// ```
+
+/// let res = my_crate::square(4);
+
+/// assert_eq!(res, 16);
+
+/// ```
+
+pub fn square(x: i32) -> i32 {
+
+    x * x
+
+}
+
+  
+
+```
+
+  
+
+### Profilage & Mesure de Performance
+
+  
+
+* **Hyperfine** : Outil de benchmark en ligne de commande (permet de mesurer la répartition temps Utilisateur / Système).
+
+* **Flamegraph** : Représentation visuelle des points chauds de consommation processeur (`cargo flamegraph`).
+
+  
+
+```
+
+  
+
+Ce document regroupe toutes les notions de vos supports de cours pour vos séances de travaux pratiques et vos révisions.
+
+  
+
+```
