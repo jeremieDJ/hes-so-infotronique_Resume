@@ -1,0 +1,233 @@
+{
+  "main": {
+    "id": "3c14e98639b5a756",
+    "type": "split",
+    "children": [
+      {
+        "id": "7e7ea49667fe6641",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3e07e341d2ae811d",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "semestre 1/physique/electromagnetisme_ET-che2026-f.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "electromagnetisme_ET-che2026-f"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4a02049c0605837a",
+    "type": "split",
+    "children": [
+      {
+        "id": "7c1cb13fb1ae2adf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3e9041c1fd9bf257",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorateur de fichiers"
+            }
+          },
+          {
+            "id": "d332f50208b302de",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Rechercher"
+            }
+          },
+          {
+            "id": "cfee4c439cd8bc29",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Signets"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "71c384e3c42b1f32",
+    "type": "split",
+    "children": [
+      {
+        "id": "c0a33e5e04fa507e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "70ac730585c0d0f7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "semestre 1/physique/electromagnetisme_ET-che2026-f.pdf",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Rétroliens"
+            }
+          },
+          {
+            "id": "dacd68fb41120ab6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "semestre 1/math/exercice/Drawing 2026-10-20 10.13.03.excalidraw.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Liens sortants"
+            }
+          },
+          {
+            "id": "bf6a7e7e62e751e3",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Mots-clés"
+            }
+          },
+          {
+            "id": "d6d2965f83b7c3d1",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Toutes les propriétés"
+            }
+          },
+          {
+            "id": "8f113fff5cb1d0c7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "semestre 1/math/exercice/Drawing 2026-10-20 10.13.03.excalidraw.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Plan"
+            }
+          },
+          {
+            "id": "954b9a0f73c1cb4b",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Ouvrir le sélecteur rapide": false,
+      "graph:Ouvrir la vue graphique": false,
+      "canvas:Créer un nouveau canvas": false,
+      "daily-notes:Ouvrir la note quotidienne": false,
+      "templates:Insérer le modèle": false,
+      "command-palette:Ouvrir la palette de commandes": false,
+      "bases:Créer une nouvelle base": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "70ac730585c0d0f7",
+  "lastOpenFiles": [
+    "semestre 1/math/formulaire dérivées+intégrales.pdf",
+    "semestre 1/math/imagemath/Pasted image 20261026215847.png",
+    "semestre 1/math/imagemath/Pasted image 20261026210430.png",
+    "semestre 1/math/imagemath/Pasted image 20261026193729.png",
+    "semestre 1/math/imagemath/Pasted image 20261026205200.png",
+    "semestre 1/math/imagemath/Pasted image 20261026214226.png",
+    "semestre 1/math/imagemath/Pasted image 20261026220417.png",
+    "semestre 1/math/imagemath/Pasted image 20261028103547.png",
+    "semestre 1/math/imagemath/Pasted image 20261027193956.png",
+    "semestre 1/math/imagemath/Pasted image 20261028001033.png",
+    "semestre 1/math/imagemath/Pasted image 20261028101208.png",
+    "semestre 1/math/imagemath",
+    "semestre 1/physique/physique.excalidraw.md",
+    "semestre 1/physique/physique.md",
+    "semestre 1/physique/electromagnetisme_ET-che2026-f.pdf",
+    "semestre 1/math/exercice/ex_24.md",
+    "semestre 1/math/exercice/serie24.pdf",
+    "semestre 1/math/résumer math2.md",
+    "semestre 1/math/Cours math 10.06.39.excalidraw.md",
+    "semestre 1/math/math.md",
+    "semestre 1/math/exercice/serie25.pdf",
+    "semestre 1/math/exercice/ex_22.md",
+    "semestre 1/math/exercice/ex_23.md",
+    "semestre 1/math/exercice/serie23.pdf",
+    "semestre 1/math/cours_ana3.pdf",
+    "semestre 1/math/formulaireTrigo.pdf",
+    "semestre 1/math/exercice/Serie22.pdf",
+    "semestre 1/math/résumer math2.md.txt",
+    "semestre 1/math/exercice/ex_21.md"
+  ]
+}

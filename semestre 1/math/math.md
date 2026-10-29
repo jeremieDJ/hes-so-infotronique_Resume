@@ -1,4 +1,4 @@
-gh
+ppgh
 
 # Fiche de Révision : Analyse 3 — Séries de Fourier
 
@@ -245,3 +245,133 @@ $$\frac{1}{T} \int_{-T/2}^{T/2} (f(t))^2 \, dt = \left(\frac{a_0}{2}\right)^2 + 
 > $$\sum_{l=0}^{\infty} \frac{1}{(2l+1)^2} = \frac{\pi^2}{8}$$
 
 #cours #analyse3 #mathematiques #fourier #signal
+
+# Fiche de Synthèse : Séries de Fourier & Valeurs Moyennes
+
+Ce document rassemble l'ensemble des notions théoriques, des propriétés et des fiches méthodologiques nécessaires pour résoudre la série d'exercices d'Analyse 3.
+
+---
+
+## 1. Valeur Moyenne et Valeur Efficace
+
+### 1.1 Définitions fondamentales
+Pour une fonction $T$-périodique $f(t)$, sa **valeur moyenne** $\bar{f}$ (ou $a_0$) sur une période $[a, a+T]$ est donnée par :
+$$\bar{f} = \frac{1}{T} \int_{a}^{a+T} f(t) \, \mathrm{d}t$$
+
+La **valeur moyenne du carré** (liée à la valeur efficace) est :
+$$\overline{f^2} = \frac{1}{T} \int_{a}^{a+T} f^2(t) \, \mathrm{d}t$$
+
+---
+
+### 1.2 Propriétés & Astuces de calcul rapide
+* **Signaux sinusoïdaux purs** : La valeur moyenne de $\sin(\omega t)$ ou $\cos(\omega t)$ sur une période entière est **toujours nulle** ($\bar{f} = 0$).
+* **Carré d'un signal sinusoïdal** : En utilisant les formules de linéarisation :
+  $$\sin^2(\theta) = \frac{1 - \cos(2\theta)}{2}, \quad \cos^2(\theta) = \frac{1 + \cos(2\theta)}{2}$$
+  La valeur moyenne de $\sin^2(\omega t)$ ou $\cos^2(\omega t)$ sur une période complète vaut **toujours $\frac{1}{2}$**.
+* **Lien avec la pulsation $\omega$** : 
+  $$T = \frac{2\pi}{\omega} \iff \omega = \frac{2\pi}{T}$$
+
+---
+
+## 2. Développement en Série de Fourier
+
+### 2.1 Formule générale
+Pour une fonction $2\pi$-périodique $f(t)$, la série de Fourier s'écrit :
+$$S_f(t) = a_0 + \sum_{k=1}^{\infty} \left( a_k \cos(kt) + b_k \sin(kt) \right)$$
+
+* **Composante continue (valeur moyenne)** :
+  $$a_0 = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) \, \mathrm{d}t$$
+  *(Note : Selon la convention $S_f(t) = \frac{a_0}{2} + \sum \dots$, le coefficient $a_0$ s'exprime avec $\frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \, \mathrm{d}t$)*.
+
+* **Coefficients des cosinus ($a_k$)** :
+  $$a_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos(kt) \, \mathrm{d}t, \quad k \ge 1$$
+
+* **Coefficients des sinus ($b_k$)** :
+  $$b_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin(kt) \, \mathrm{d}t, \quad k \ge 1$$
+
+---
+
+### 2.2 Simplifications selon la Parité (Symétrie)
+
+* **Règles de multiplication des parités** :
+  * $\text{Paire} \times \text{Paire} = \text{Paire}$
+  * $\text{Impaire} \times \text{Impaire} = \text{Paire}$
+  * $\text{Impaire} \times \text{Paire} = \text{Impaire}$
+
+| Type de fonction | Propriété géométrique | Conséquence sur la Série de Fourier | Formules simplifiées |
+| :--- | :--- | :--- | :--- |
+| **Fonction Paire** | $f(-t) = f(t)$ (Axe de symétrie vertical) | $b_k = 0$ (Uniquement des cosinus) | $a_0 = \frac{1}{\pi} \int_0^{\pi} f(t) \mathrm{d}t$<br>$a_k = \frac{2}{\pi} \int_0^{\pi} f(t) \cos(kt) \mathrm{d}t$ |
+| **Fonction Impaire** | $f(-t) = -f(t)$ (Symétrie centrale par rapport à l'origine) | $a_0 = 0$ et $a_k = 0$ (Uniquement des sinus) | $b_k = \frac{2}{\pi} \int_0^{\pi} f(t) \sin(kt) \mathrm{d}t$ |
+
+---
+
+### 2.3 Transformations géométriques de signaux
+
+Si $f(t)$ a pour série $S_f(t) = a_0 + \sum (a_k \cos(kt) + b_k \sin(kt))$ :
+
+1. **Décalage vertical (Hauteur)** :  
+   $$g(t) = f(t) + C \implies a_{0, \text{nouveau}} = a_0 + C$$
+   *(Les termes oscillants $a_k$ et $b_k$ pour $k \ge 1$ restent inchangés).*
+
+2. **Changement d'échelle d'amplitude** :  
+   $$g(t) = A \cdot f(t) \implies \text{Chaque coefficient est multiplié par } A$$
+
+3. **Changement de fréquence (Dilatation/Contraction)** :  
+   $$g(t) = f(\omega t) \implies \text{Remplacer } t \text{ par } \omega t \text{ dans tous les terme sin/cos}$$
+
+4. **Déphasage temporel (Glissement horizontal)** :  
+   $$g(t) = f(t + t_0) \implies \text{Remplacer } t \text{ par } (t + t_0) \text{ puis simplifier avec la trigonométrie}$$
+
+---
+
+## 3. Méthodologie : L'Intégration par Parties (IPP)
+
+### 3.1 La Formule
+$$\int u \, \mathrm{d}v = u \cdot v - \int v \, \mathrm{d}u$$
+En bornes définies :
+$$\int_{a}^{b} u(t) v'(t) \, \mathrm{d}t = \left[ u(t) v(t) \right]_{a}^{b} - \int_{a}^{b} u'(t) v(t) \, \mathrm{d}t$$
+
+### 3.2 Choix des variables (Règle ALPES)
+Pour choisir quelle partie poser égale à $u$ (à dériver), suivre la priorité **ALPES** :
+1. **A** — Arc (fonctions réciproques : $\arctan$, $\arcsin$)
+2. **L** — Logarithmes ($\ln$)
+3. **P** — Polynômes / Puissances ($t, t^2, 2t+1 \dots$) $\leftarrow$ *Diminue de degré lors de la dérivation*
+4. **E** — Exponentielles ($e^t$)
+5. **S** — Sinus / Cosinus ($\sin(kt), \cos(kt)$)
+
+### 3.3 Exemple type de calcul pour $b_k$
+Pour calculer $\int_{0}^{\pi} t \sin(kt) \, \mathrm{d}t$ :
+* On pose $u = t \implies \mathrm{d}u = \mathrm{d}t$
+* On pose $\mathrm{d}v = \sin(kt) \mathrm{d}t \implies v = -\frac{\cos(kt)}{k}$
+
+$$\begin{aligned}
+\int_{0}^{\pi} t \sin(kt) \, \mathrm{d}t &= \left[ -\frac{t \cos(kt)}{k} \right]_{0}^{\pi} - \int_{0}^{\pi} \left( -\frac{\cos(kt)}{k} \right) \mathrm{d}t \\
+&= \left( -\frac{\pi \cos(k\pi)}{k} - 0 \right) + \frac{1}{k} \left[ \frac{\sin(kt)}{k} \right]_{0}^{\pi} \\
+&= -\frac{\pi (-1)^k}{k} + 0 = -\frac{\pi (-1)^k}{k}
+\end{aligned}$$
+
+---
+
+## 4. Spectre d'Amplitude
+
+Le **spectre d'amplitude** est un graphique en bâtons représentant l'amplitude de chaque fréquence présentée dans le signal :
+
+* **En abscisse ($\omega$)** : La fréquence/pulsation $k\omega$ (les entiers $k = 0, 1, 2, 3 \dots$).
+* **En ordonnée ($c_k$)** : L'amplitude donnée par :
+  $$c_0 = |a_0|$$
+  $$c_k = \sqrt{a_k^2 + b_k^2} \quad (k \ge 1)$$
+
+---
+
+## 5. Théorème de Dirichlet (Somme de séries numériques)
+
+Si une fonction $f$ est continue en un point $t_0$, sa série de Fourier converge vers la valeur de la fonction :
+$$S_f(t_0) = f(t_0)$$
+
+**Technique pour calculer la somme d'une série numérique (ex: $\sum \frac{(-1)^l}{(2l+1)^3}$)** :
+1. Poser la série de Fourier $S_f(t)$ obtenue.
+2. Évaluer la série en une valeur particulière de $t$ (souvent $t = 0, \frac{\pi}{2}$ ou $\pi$).
+3. Égaler $S_f(t_0)$ à $f(t_0)$ et isoler algébriquement la somme recherchée.
+```eof
+
+J'ai résumé toute la théorie, les propriétés de parité, les règles de transformation, la méthode d'intégration par parties et la construction du spectre d'amplitude dans le fichier Markdown ci-dessus. N'hésite pas si tu as des questions sur un point précis !
