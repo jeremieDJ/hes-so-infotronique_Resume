@@ -13,10 +13,10 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "semestre 1/labo/Instrumentation/Instr_exercices_ch3_erreur_mesure.pdf"
+                "file": "semestre 1/labo/Basic Electronic Circuits/Breadboarding_1_FR.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Instr_exercices_ch3_erreur_mesure"
+              "title": "Breadboarding_1_FR"
             }
           }
         ]
@@ -97,6 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "semestre 1/labo/Basic Electronic Circuits/Breadboarding_1_FR.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -198,26 +199,25 @@
   },
   "active": "3e9041c1fd9bf257",
   "lastOpenFiles": [
+    "semestre 1/physique/exercice/Electromagnetisme-SYND-2026-f.pdf",
+    "semestre 1/physique/r_sum_complet_lectrostatique_et_lectromagn_tisme.md",
+    "semestre 1/physique/physique.excalidraw.md",
+    "semestre 1/physique/physique.md",
+    "semestre 1/physique/exercice/Electromagnetisme-SYND-2026-sol.pdf",
+    "semestre 1/physique/electromagnetisme_ET-che2026-f.pdf",
+    "semestre 1/physique/correction_examen_physique_se3.md",
+    "semestre 1/physique/2025.10.22.SE3examen-controlecontinu-merged.pdf",
+    "semestre 1/physique/exercice",
+    "semestre 1/labo/Instrumentation/Instr_exercices_ch3_erreur_mesure-1.pdf",
     "semestre 1/labo/Instrumentation/Instr_exercices_ch3_erreur_mesure.pdf",
     "semestre 1/labo/Instrumentation/Instr_exercices_ch3_erreur_mesure_corrige.pdf",
-    "semestre 1/labo/Instrumentation/Instr_exercices_ch3_erreur_mesure-1.pdf",
     "semestre 1/labo/Instrumentation/CH6_Ex_supp_Codeur_Accéléromètre.pdf",
     "semestre 1/labo/Instrumentation/codeurs_incrementaux.pdf",
-    "semestre 1/Instrumentation/exercice/Instr_exercices_ch4_etalonnage_regression-hevs.pdf",
-    "semestre 1/Instrumentation/exercice/ex_6.2_Ex_Supp_Codeurs_sol.pdf",
-    "semestre 1/Instrumentation/exercice/Instr_exercices_ch2_statique_linearisation_corrige.pdf",
-    "semestre 1/Instrumentation/exercice/Instr_exercices_ch2_statique_linearisation.pdf",
-    "semestre 1/Instrumentation/exercice/Instr_exercices_ch1_methodes_corrige.pdf",
-    "semestre 1/Instrumentation/exercice/Instr_exercices_ch1_methodes.pdf",
-    "semestre 1/physique/r_sum_complet_lectrostatique_et_lectromagn_tisme.md",
-    "semestre 1/physique/physique.md",
-    "semestre 1/physique/correction_examen_physique_se3.md",
     "semestre 1/electronic/exercice/Drawing 2026-10-14 07.51.05.excalidraw.md",
     "semestre 1/programation/prog (Rust)/Résumer cours.md",
     "semestre 1/programation/prog (Rust)/prog (Rust).md",
     "semestre 1/programation/prog (C)/prog  (C).md",
     "semestre 1/math/exercice/ex_24.md",
-    "semestre 1/physique/physique.excalidraw.md",
     "semestre 1/math/Cours math 10.06.39.excalidraw.md",
     "semestre 1/math/exercice/ex_23.md",
     "semestre 1/math/imagemath/Pasted image 20261026215847.png",
