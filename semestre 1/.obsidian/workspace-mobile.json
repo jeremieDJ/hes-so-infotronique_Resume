@@ -1,0 +1,182 @@
+{
+  "main": {
+    "id": "b4eb1ce4dbfe09bd",
+    "type": "split",
+    "children": [
+      {
+        "id": "de8e92f6512245b3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af116edcaa31723c",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "physique/2025.10.22.SE3examen-controlecontinu-merged.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "2025.10.22.SE3examen-controlecontinu-merged"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "de4734b3a0d4f6fd",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "671acc1f1993da3b",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Explorateur de fichiers"
+        }
+      },
+      {
+        "id": "ffee379c2711f444",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Rechercher"
+        }
+      },
+      {
+        "id": "b7ee93458ca866aa",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "Mots-clés"
+        }
+      },
+      {
+        "id": "844be2234461bf40",
+        "type": "leaf",
+        "state": {
+          "type": "all-properties",
+          "state": {
+            "sortOrder": "frequency",
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-archive",
+          "title": "Toutes les propriétés"
+        }
+      },
+      {
+        "id": "6dbc69beef314bf4",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-bookmark",
+          "title": "Signets"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "297e1bb40fc1e1a2",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "1903cee3d3be5aae",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "physique/2025.10.22.SE3examen-controlecontinu-merged.pdf",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "Rétroliens"
+        }
+      },
+      {
+        "id": "5be9015a8f995519",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "physique/2025.10.22.SE3examen-controlecontinu-merged.pdf",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Liens sortants"
+        }
+      },
+      {
+        "id": "85610768a50678c6",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "physique/2025.10.22.SE3examen-controlecontinu-merged.pdf",
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "Plan"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Ouvrir le sélecteur rapide": false,
+      "graph:Ouvrir la vue graphique": false,
+      "canvas:Créer un nouveau canvas": false,
+      "daily-notes:Ouvrir la note quotidienne": false,
+      "templates:Insérer le modèle": false,
+      "command-palette:Ouvrir la palette de commandes": false,
+      "bases:Créer une nouvelle base": false
+    }
+  },
+  "active": "af116edcaa31723c",
+  "lastOpenFiles": [
+    "physique/electromagnetisme_ET-che2026-f.pdf",
+    "physique/2025.10.22.SE3examen-controlecontinu-merged.pdf",
+    "programation/prog (Rust)/00-aprog-all-en.pdf",
+    "physique/physique.md",
+    "physique/Electromagnetisme-SYND-2026-f.pdf"
+  ]
+}
