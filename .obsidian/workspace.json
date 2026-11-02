@@ -4,19 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "7e7ea49667fe6641",
+        "id": "c01bdf978ca74472",
         "type": "tabs",
         "children": [
           {
-            "id": "3e07e341d2ae811d",
+            "id": "41a161a9da4338f1",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "excalidraw",
               "state": {
-                "file": "semestre 1/labo/Basic Electronic Circuits/Breadboarding_1_FR.pdf"
+                "file": "semestre 1/math/exercice/ex_21.md"
               },
-              "icon": "lucide-file-text",
-              "title": "Breadboarding_1_FR"
+              "icon": "excalidraw-icon",
+              "title": "ex_21"
             }
           }
         ]
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "semestre 1/labo/Basic Electronic Circuits/Breadboarding_1_FR.pdf",
+                "file": "semestre 1/math/exercice/ex_21.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -197,29 +197,96 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3e9041c1fd9bf257",
+  "floating": {
+    "id": "ea22d81a221051d4",
+    "type": "floating",
+    "children": [
+      {
+        "id": "16f5175de12f5fc6",
+        "type": "window",
+        "children": [
+          {
+            "id": "6154b7c24c9a5cda",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "3e07e341d2ae811d",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "semestre 1/math/fiche_de_revision_fourier.md",
+                    "mode": "preview",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "fiche_de_revision_fourier"
+                }
+              },
+              {
+                "id": "dca261a54b082acd",
+                "type": "leaf",
+                "state": {
+                  "type": "pdf",
+                  "state": {
+                    "file": "semestre 1/math/formulaire dérivées+intégrales.pdf"
+                  },
+                  "icon": "lucide-file-text",
+                  "title": "formulaire dérivées+intégrales"
+                }
+              },
+              {
+                "id": "2585ba42b3f0653b",
+                "type": "leaf",
+                "state": {
+                  "type": "pdf",
+                  "state": {
+                    "file": "semestre 1/math/formulaireTrigo.pdf"
+                  },
+                  "icon": "lucide-file-text",
+                  "title": "formulaireTrigo"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": -898,
+        "y": 286,
+        "width": 1448,
+        "height": 1047,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "41a161a9da4338f1",
   "lastOpenFiles": [
-    "semestre 1/physique/exercice/Electromagnetisme-SYND-2026-f.pdf",
+    "semestre 1/math/exercice/ex_24.md",
+    "semestre 1/math/exercice/serie21.pdf",
+    "semestre 1/math/exercice/ex_22.md",
+    "semestre 1/math/fiche_de_revision_fourier.md",
+    "semestre 1/math/exercice/ex_23.md",
+    "semestre 1/math/formulaireTrigo.pdf",
+    "semestre 1/math/formulaire dérivées+intégrales.pdf",
+    "semestre 1/math/exercice/serie23.pdf",
+    "semestre 1/math/exercice/Serie22.pdf",
+    "semestre 1/math/exercice/ex_21.md",
+    "semestre 1/math/résumer math2.md",
+    "semestre 1/programation/prog (C)/examen/Exa2_2025 - soluce.pdf",
+    "semestre 1/programation/prog (C)/examen/Exa1_2023 - soluce_for_students.pdf",
+    "semestre 1/programation/prog (C)/examen/Exa2_2023 - soluce_for_students.pdf",
+    "semestre 1/programation/prog (C)/03_Interrupts.pdf",
+    "semestre 1/programation/prog (C)/01_introduction_architecture.pdf",
+    "semestre 1/programation/prog (C)/prog  (C).md",
     "semestre 1/physique/r_sum_complet_lectrostatique_et_lectromagn_tisme.md",
     "semestre 1/physique/physique.excalidraw.md",
     "semestre 1/physique/physique.md",
-    "semestre 1/physique/exercice/Electromagnetisme-SYND-2026-sol.pdf",
-    "semestre 1/physique/electromagnetisme_ET-che2026-f.pdf",
     "semestre 1/physique/correction_examen_physique_se3.md",
-    "semestre 1/physique/2025.10.22.SE3examen-controlecontinu-merged.pdf",
-    "semestre 1/physique/exercice",
-    "semestre 1/labo/Instrumentation/Instr_exercices_ch3_erreur_mesure-1.pdf",
-    "semestre 1/labo/Instrumentation/Instr_exercices_ch3_erreur_mesure.pdf",
-    "semestre 1/labo/Instrumentation/Instr_exercices_ch3_erreur_mesure_corrige.pdf",
-    "semestre 1/labo/Instrumentation/CH6_Ex_supp_Codeur_Accéléromètre.pdf",
-    "semestre 1/labo/Instrumentation/codeurs_incrementaux.pdf",
     "semestre 1/electronic/exercice/Drawing 2026-10-14 07.51.05.excalidraw.md",
     "semestre 1/programation/prog (Rust)/Résumer cours.md",
     "semestre 1/programation/prog (Rust)/prog (Rust).md",
-    "semestre 1/programation/prog (C)/prog  (C).md",
-    "semestre 1/math/exercice/ex_24.md",
     "semestre 1/math/Cours math 10.06.39.excalidraw.md",
-    "semestre 1/math/exercice/ex_23.md",
     "semestre 1/math/imagemath/Pasted image 20261026215847.png",
     "semestre 1/math/imagemath/Pasted image 20261026210430.png",
     "semestre 1/math/imagemath/Pasted image 20261026193729.png",
@@ -230,9 +297,6 @@
     "semestre 1/math/imagemath/Pasted image 20261027193956.png",
     "semestre 1/math/imagemath/Pasted image 20261028001033.png",
     "semestre 1/math/imagemath/Pasted image 20261028101208.png",
-    "semestre 1/math/résumer math2.md",
-    "semestre 1/math/math.md",
-    "semestre 1/math/exercice/ex_22.md",
-    "semestre 1/math/exercice/ex_21.md"
+    "semestre 1/math/math.md"
   ]
 }
