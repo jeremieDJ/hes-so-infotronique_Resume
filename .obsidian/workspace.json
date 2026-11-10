@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "semestre 1/labo/Prog_C/Résumer C pour labo.md",
+                "file": "semestre 1/Instrumentation/exercice/prog/Sans titre.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Résumer C pour labo"
+              "title": "Sans titre"
             }
           }
         ]
@@ -203,20 +203,23 @@
   },
   "active": "e9e72a22beec2bb2",
   "lastOpenFiles": [
-    "semestre 1/labo/Prog_C/lab_setup_v1.0 - VSCODE-4.pdf",
-    "semestre 1/labo/Prog_C/STM23cube/gnu-tools-for-stm32/14.3.1+st.2/share/doc/gcc-arm-none-eabi/html/gcc/FR_002dV-Built_002din-Functions.html",
-    "semestre 1/labo/Prog_C/r_sum_des_laboratoires_stm32.md",
+    "semestre 1/Instrumentation/cours/Cours_numpy_python.pdf",
+    "semestre 1/Instrumentation/exercice/prog/Sans titre.md",
+    "semestre 1/Instrumentation/exercice/prog",
+    "semestre 1/Instrumentation/exercice/ch6/codeurs_incrementaux-1.pdf",
+    "semestre 1/Instrumentation/exercice/ch6/ex_6.2_Ex_Supp_Codeurs_sol.pdf",
+    "semestre 1/Instrumentation/exercice/ch6/Instr_capteurs_position_acceleration_force.pdf",
+    "semestre 1/Instrumentation/cours/Cours_6_regression_etalonnage.pdf",
+    "semestre 1/Instrumentation/cours/Cours_4_erreurs de mesure.pdf",
+    "semestre 1/Instrumentation/cours/Cours_2_correction_questions_resolution.pdf",
+    "semestre 1/Instrumentation/exercice/ch6/CH6_Codeur Incrémentaux.pdf",
+    "semestre 1/Instrumentation/résumer/Thème 5 - Les Codeurs Incrémentaux et Absolus (Théorie, Formules et Exercices Corrigés).pdf",
+    "semestre 1/Instrumentation/exercice/ch3/'Correctino.md",
+    "semestre 1/Instrumentation/exercice/ch2/correction.md",
+    "semestre 1/Instrumentation/exercice/ch1/correction.md",
     "semestre 1/labo/Prog_C/Résumer C pour labo.md",
-    "semestre 1/labo/Prog_C/STM23cube/gnu-tools-for-stm32/14.3.1+st.2/share/doc/gcc-arm-none-eabi/html/gccint/index.html",
+    "semestre 1/labo/Prog_C/r_sum_des_laboratoires_stm32.md",
     "semestre 1/labo/Prog_C/r_sum_des_laboratoires_stm32 (1).md",
-    "semestre 1/labo/Prog_C/STM23cube/gnu-tools-for-stm32/14.3.1+st.2/share/doc/gcc-arm-none-eabi/html/gccint/Int-Iterators.html",
-    "semestre 1/labo/Prog_C/STM23cube/gnu-tools-for-stm32/14.3.1+st.2/share/doc/gcc-arm-none-eabi/html/gccint/LTO-Testing.html",
-    "semestre 1/labo/Prog_C/STM23cube/gnu-tools-for-stm32/14.3.1+st.2/share/doc/gcc-arm-none-eabi/html/gcc/Explicit-Reg-Vars.html",
-    "semestre 1/labo/Prog_C/STM23cube/gnu-tools-for-stm32/14.3.1+st.2/share/doc/gcc-arm-none-eabi/html/gccint/Looping-Patterns.html",
-    "semestre 1/labo/Prog_C/STM23cube/gnu-tools-for-stm32/14.3.1+st.2/share/doc/gcc-arm-none-eabi/html/gccint/Late-IPA-passes.html",
-    "semestre 1/labo/Prog_C/STM23cube/gnu-tools-for-stm32/14.3.1+st.2/share/doc/gcc-arm-none-eabi/html/gdb/Basic-Python.html",
-    "semestre 1/labo/Prog_C/STM23cube/gnu-tools-for-stm32/14.3.1+st.2/share/doc/gcc-arm-none-eabi/html/gccint/Incdec.html",
-    "semestre 1/labo/Prog_C/STM23cube/gnu-tools-for-stm32/14.3.1+st.2/share/doc/gcc-arm-none-eabi/html/gcc/Fast-enumeration.html",
     "semestre 1/physique/r_sum_complet_lectrostatique_et_lectromagn_tisme.md",
     "semestre 1/physique/examen/Sans titre.md",
     "semestre 1/physique/examen/WhatsApp Image 2026-11-04 at 10.46.01.jpeg",
