@@ -11,14 +11,12 @@
             "id": "e9e72a22beec2bb2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "semestre 1/Instrumentation/exercice/prog/Sans titre.md",
-                "mode": "source",
-                "source": false
+                "file": "semestre 1/Instrumentation/feuille_de_triche_v6.pdf"
               },
-              "icon": "lucide-file",
-              "title": "Sans titre"
+              "icon": "lucide-file-text",
+              "title": "feuille_de_triche_v6"
             }
           }
         ]
@@ -203,20 +201,29 @@
   },
   "active": "e9e72a22beec2bb2",
   "lastOpenFiles": [
-    "semestre 1/Instrumentation/cours/Cours_numpy_python.pdf",
-    "semestre 1/Instrumentation/exercice/prog/Sans titre.md",
-    "semestre 1/Instrumentation/exercice/prog",
-    "semestre 1/Instrumentation/exercice/ch6/codeurs_incrementaux-1.pdf",
-    "semestre 1/Instrumentation/exercice/ch6/ex_6.2_Ex_Supp_Codeurs_sol.pdf",
+    "semestre 1/labo/Instrumentation/resolutionComplete_tp1_station_meteo_pico_2.md",
+    "semestre 1/labo/Instrumentation/Intro_Projet_Instrumentation.pdf",
+    "semestre 1/labo/Instrumentation/guide_et_m_thodologie_du_poster_de_projet.md",
+    "semestre 1/Instrumentation/exercice/méthode de mesure/correction.md",
+    "semestre 1/Instrumentation/aide-memoire-numpy-matplotlib(1).html",
+    "semestre 1/Instrumentation/feuille_de_triche_v6.pdf",
+    "semestre 1/Instrumentation/résumer/Thème 1 - Les Méthodes de Mesure (Théorie, Formules et Exercices Corrigés).pdf",
+    "semestre 1/Instrumentation/résumer/r_sum_complet_d_instrumentation_et_math_matiques.md",
+    "semestre 1/Instrumentation/résumer/Thème 2 - Caractéristiques Statiques et Linéarisation (Théorie, Formules et Exercices Corrigés).pdf",
+    "semestre 1/Instrumentation/résumer/Thème 6 - Regréssion linéaire.pdf",
     "semestre 1/Instrumentation/exercice/ch6/Instr_capteurs_position_acceleration_force.pdf",
-    "semestre 1/Instrumentation/cours/Cours_6_regression_etalonnage.pdf",
-    "semestre 1/Instrumentation/cours/Cours_4_erreurs de mesure.pdf",
-    "semestre 1/Instrumentation/cours/Cours_2_correction_questions_resolution.pdf",
-    "semestre 1/Instrumentation/exercice/ch6/CH6_Codeur Incrémentaux.pdf",
-    "semestre 1/Instrumentation/résumer/Thème 5 - Les Codeurs Incrémentaux et Absolus (Théorie, Formules et Exercices Corrigés).pdf",
+    "semestre 1/labo/Instrumentation/tp-pico2-station-meteo.pdf",
+    "semestre 1/labo/Instrumentation/resolutionComplete_tp3_codeurOptiqueIncremental.md",
+    "semestre 1/labo/Instrumentation/resolutionComplete_tp2_thermometreAResistanceAuPlatine_pt100.md",
+    "semestre 1/labo/Instrumentation/TP_ThermometreAResistanceAuPlatine_V1_0_fr-3.pdf",
+    "semestre 1/labo/Instrumentation/TP_Codeur.pdf",
+    "semestre 1/Instrumentation/exercice/linéarisation et caractérisitiques statiques/correction.md",
+    "semestre 1/Instrumentation/exercice/Erreurs de messure/'Correctino.md",
+    "semestre 1/Instrumentation/cours/Résumé Complet.md",
     "semestre 1/Instrumentation/exercice/ch3/'Correctino.md",
     "semestre 1/Instrumentation/exercice/ch2/correction.md",
     "semestre 1/Instrumentation/exercice/ch1/correction.md",
+    "semestre 1/Instrumentation/exercice/prog/Sans titre.md",
     "semestre 1/labo/Prog_C/Résumer C pour labo.md",
     "semestre 1/labo/Prog_C/r_sum_des_laboratoires_stm32.md",
     "semestre 1/labo/Prog_C/r_sum_des_laboratoires_stm32 (1).md",
@@ -231,14 +238,6 @@
     "semestre 1/math/exercice/ex_21.md",
     "semestre 1/math/fiche_de_revision_fourier.md",
     "semestre 1/math/exercice/ex_24.md",
-    "semestre 1/math/exercice/ex_22.md",
-    "semestre 1/math/exercice/ex_23.md",
-    "semestre 1/math/résumer math2.md",
-    "semestre 1/programation/prog (C)/prog  (C).md",
-    "semestre 1/electronic/exercice/Drawing 2026-10-14 07.51.05.excalidraw.md",
-    "semestre 1/programation/prog (Rust)/Résumer cours.md",
-    "semestre 1/programation/prog (Rust)/prog (Rust).md",
-    "semestre 1/math/Cours math 10.06.39.excalidraw.md",
     "semestre 1/math/imagemath/Pasted image 20261026215847.png",
     "semestre 1/math/imagemath/Pasted image 20261026210430.png",
     "semestre 1/math/imagemath/Pasted image 20261026193729.png",
@@ -246,7 +245,6 @@
     "semestre 1/math/imagemath/Pasted image 20261026214226.png",
     "semestre 1/math/imagemath/Pasted image 20261026220417.png",
     "semestre 1/math/imagemath/Pasted image 20261028103547.png",
-    "semestre 1/math/imagemath/Pasted image 20261027193956.png",
-    "semestre 1/math/math.md"
+    "semestre 1/math/imagemath/Pasted image 20261027193956.png"
   ]
 }
