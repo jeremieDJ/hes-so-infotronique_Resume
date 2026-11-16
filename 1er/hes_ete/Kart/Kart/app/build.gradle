@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace = "ch.hevs.ss1"
+    compileSdk 37
+
+    defaultConfig {
+        applicationId "ch.hevs.ss1"
+        minSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+}
+
+dependencies {
+    implementation 'androidx.activity:activity-ktx:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation 'no.nordicsemi.android:ble-ktx:2.11.0'
+    implementation 'androidx.core:core-ktx:1.19.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.14.0'
+}

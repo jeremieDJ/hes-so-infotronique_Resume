@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Configuration des Servomoteurs"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- ================= DIRECTION ================= -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. Servo Direction"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSteeringCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Centre Direction: 210" />
+        <SeekBar
+            android:id="@+id/sbSteeringCenter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:min="180"
+            android:max="250"
+            android:progress="210" />
+
+        <TextView
+            android:id="@+id/tvSteeringMaxAngle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plage Direction: 180 à 250" />
+        <SeekBar
+            android:id="@+id/sbSteeringMaxAngle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="85"
+            android:progress="85" />
+
+        <TextView
+            android:id="@+id/tvSteeringTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Position Direction: 210" />
+        <SeekBar
+            android:id="@+id/sbSteeringTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="85"
+            android:progress="40" />
+
+        <!-- ================= SERVO 1 (LED 5) ================= -->
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#CCCCCC" android:layout_marginVertical="12dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2. Servo Auxiliaire 1 (LED5)" android:textSize="18sp" android:textStyle="bold" />
+
+        <TextView android:id="@+id/tvS1Center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Centre: 1500 µs" />
+        <SeekBar android:id="@+id/sbS1Center" android:layout_width="match_parent" android:layout_height="wrap_content" android:min="1000" android:max="2000" android:progress="1500" />
+
+        <TextView android:id="@+id/tvS1Range" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Angle Max: ±500 µs" />
+        <SeekBar android:id="@+id/sbS1Range" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="1000" android:progress="500" />
+
+        <TextView android:id="@+id/tvS1Test" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Test Position" />
+        <SeekBar android:id="@+id/sbS1Test" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="200" android:progress="100" />
+
+        <!-- ================= SERVO 2 (LED 6) ================= -->
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#CCCCCC" android:layout_marginVertical="12dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3. Servo Auxiliaire 2 (LED6)" android:textSize="18sp" android:textStyle="bold" />
+
+        <TextView android:id="@+id/tvS2Center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Centre: 1500 µs" />
+        <SeekBar android:id="@+id/sbS2Center" android:layout_width="match_parent" android:layout_height="wrap_content" android:min="1000" android:max="2000" android:progress="1500" />
+
+        <TextView android:id="@+id/tvS2Range" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Angle Max: ±500 µs" />
+        <SeekBar android:id="@+id/sbS2Range" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="1000" android:progress="500" />
+
+        <TextView android:id="@+id/tvS2Test" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Test Position" />
+        <SeekBar android:id="@+id/sbS2Test" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="200" android:progress="100" />
+
+        <!-- ================= SERVO 3 (LED 7) ================= -->
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#CCCCCC" android:layout_marginVertical="12dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4. Servo Auxiliaire 3 (LED7)" android:textSize="18sp" android:textStyle="bold" />
+
+        <TextView android:id="@+id/tvS3Center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Centre: 1500 µs" />
+        <SeekBar android:id="@+id/sbS3Center" android:layout_width="match_parent" android:layout_height="wrap_content" android:min="1000" android:max="2000" android:progress="1500" />
+
+        <TextView android:id="@+id/tvS3Range" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Angle Max: ±500 µs" />
+        <SeekBar android:id="@+id/sbS3Range" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="1000" android:progress="500" />
+
+        <TextView android:id="@+id/tvS3Test" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Test Position" />
+        <SeekBar android:id="@+id/sbS3Test" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="200" android:progress="100" />
+
+        <!-- ================= SERVO 4 (LED 8) ================= -->
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#CCCCCC" android:layout_marginVertical="12dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5. Servo Auxiliaire 4 (LED8)" android:textSize="18sp" android:textStyle="bold" />
+
+        <TextView android:id="@+id/tvS4Center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Centre: 1500 µs" />
+        <SeekBar android:id="@+id/sbS4Center" android:layout_width="match_parent" android:layout_height="wrap_content" android:min="1000" android:max="2000" android:progress="1500" />
+
+        <TextView android:id="@+id/tvS4Range" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Angle Max: ±500 µs" />
+        <SeekBar android:id="@+id/sbS4Range" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="1000" android:progress="500" />
+
+        <TextView android:id="@+id/tvS4Test" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Test Position" />
+        <SeekBar android:id="@+id/sbS4Test" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="200" android:progress="100" />
+
+    </LinearLayout>
+</ScrollView>

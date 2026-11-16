@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp"
+        tools:context=".MyKartRemote">
+
+        <!-- ================================================================= -->
+        <!-- BATTERIE -->
+        <!-- ================================================================= -->
+
+        <LinearLayout
+            android:id="@+id/layoutBattery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:layout_width="32dp"
+                android:layout_height="80dp">
+
+                <ProgressBar
+                    android:id="@+id/progressBarBattery"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="80dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:max="100"
+                    android:progress="0"
+                    android:rotation="-90" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvBatteryPercentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="0%"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvBatteryVoltage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0 V"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tvBatteryCurrent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0 A"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <!-- ================================================================= -->
+        <!-- DIRECTION -->
+        <!-- ================================================================= -->
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Direction"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutBattery" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="4dp"
+            android:max="255"
+            android:min="0"
+            android:progress="127"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/tvAngle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Angle : 0°"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+        <!-- ================================================================= -->
+        <!-- CAPTEUR DE DISTANCE -->
+        <!-- ================================================================= -->
+
+        <TextView
+            android:id="@+id/tvDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Distance : -- cm"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAngle" />
+
+        <!-- ================================================================= -->
+        <!-- GYROSCOPE & MANETTE -->
+        <!-- ================================================================= -->
+
+        <ToggleButton
+            android:id="@+id/toggleButtonGyro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textOff="Gyro OFF"
+            android:textOn="Gyro ON"
+            app:layout_constraintEnd_toStartOf="@+id/toggleButtonGamepad"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDistance" />
+
+        <ToggleButton
+            android:id="@+id/toggleButtonGamepad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textOff="Manette OFF"
+            android:textOn="Manette ON"
+            app:layout_constraintBottom_toBottomOf="@+id/toggleButtonGyro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/toggleButtonGyro"
+            app:layout_constraintTop_toTopOf="@+id/toggleButtonGyro" />
+
+        <!-- ================================================================= -->
+        <!-- VITESSE DE CONSIGNE & RÉELLE -->
+        <!-- ================================================================= -->
+
+        <TextView
+            android:id="@+id/tvSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Vitesse : 0"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toggleButtonGyro" />
+
+        <SeekBar
+            android:id="@+id/seekBarSpeed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:max="30"
+            android:progress="15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpeed" />
+
+        <TextView
+            android:id="@+id/tvRealSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vitesse réelle : 0.00 m/s"
+            android:textColor="#D32F2F"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarSpeed" />
+
+        <!-- ================================================================= -->
+        <!-- ÉCLAIRAGE (LED) -->
+        <!-- ================================================================= -->
+
+        <LinearLayout
+            android:id="@+id/layoutLeds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRealSpeed">
+
+            <ToggleButton
+                android:id="@+id/btnToggleLed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOff="LEDs OFF"
+                android:textOn="LEDs ON" />
+
+            <ToggleButton
+                android:id="@+id/btnBlink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textOff="Clignotant OFF"
+                android:textOn="Clignotant ON" />
+
+        </LinearLayout>
+
+        <!-- ================================================================= -->
+        <!-- BOUTONS D'ANIMATION -->
+        <!-- ================================================================= -->
+
+        <LinearLayout
+            android:id="@+id/layoutAnimationButtons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutLeds">
+
+            <Button
+                android:id="@+id/btnAnimServo5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Toit Séquentiel"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btnAnimServo6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:text="Phare G (LED7)"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btnAnimServos78"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:text="Phare D (LED8)"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <!-- ================================================================= -->
+        <!-- RÉGLAGE DES SERVOMOTEURS (120° Max) -->
+        <!-- ================================================================= -->
+
+        <LinearLayout
+            android:id="@+id/layoutServos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutAnimationButtons">
+
+            <!-- SERVO LED5 (Coffre) -->
+            <TextView
+                android:id="@+id/tvAngleLed5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coffre (LED5) : 120°"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/seekBarLed5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="120"
+                android:progress="120" />
+
+            <!-- SERVO LED6 (Toit) -->
+            <TextView
+                android:id="@+id/tvAngleLed6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Toit (LED6) : 0°"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/seekBarLed6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="120"
+                android:progress="0" />
+
+            <!-- SERVO LED7 -->
+            <TextView
+                android:id="@+id/tvAngleLed7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Phare Gauche (LED7) : 0°"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/seekBarLed7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="120"
+                android:progress="0" />
+
+            <!-- SERVO LED8 -->
+            <TextView
+                android:id="@+id/tvAngleLed8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Phare Droit (LED8) : 0°"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/seekBarLed8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="120"
+                android:progress="0" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

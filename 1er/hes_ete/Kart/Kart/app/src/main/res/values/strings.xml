@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Kart</string>
+    <string name="button_1">Mon beau bouton</string>
+
+    <!-- Libellés des LEDs -->
+    <string name="led_1">LED 1</string>
+    <string name="led_2">LED 2</string>
+    <string name="led_3">LED 3</string>
+    <string name="led_4">LED 4</string>
+    <string name="blink">Clignotant</string>
+
+    <!-- Textes dynamiques pour la barre de progression -->
+    <string name="show_progress">Afficher la barre de progression</string>
+    <string name="hide_progress">Masquer la barre de progression</string>
+
+    <!-- Libellés d'affichage -->
+    <string name="textView">Vitesse : %1$d</string>
+    <string name="textView3">Distance obstacle : %1$.1f cm</string>
+</resources>

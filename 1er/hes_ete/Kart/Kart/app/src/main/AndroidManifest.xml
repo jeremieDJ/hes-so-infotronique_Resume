@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:icon="@mipmap/ic_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_icon_round"
+        android:supportsRtl="false"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:icon">
+        <activity
+            android:name=".MyKartRemote"
+            android:exported="false"
+            android:label="Mode_test"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.RUN" />
+
+                <category android:name="ch.hevs.kart.RCA2" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Mode_auto"
+            android:exported="false"
+            android:label="Mode auto"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.RUN" />
+
+                <category android:name="ch.hevs.kart.RCA2" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ModeManuelActivity"
+            android:exported="false"
+            android:label="Mode Course"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.RUN" />
+
+                <category android:name="ch.hevs.kart.RCA2" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SetservoActivity"
+            android:exported="false"
+            android:label="TEST servo"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.RUN" />
+
+                <category android:name="ch.hevs.kart.RCA2" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,82 @@
+import javafx.animation.*;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.util.Random;
+
+public class DiceAnimation extends Application {
+
+    private final Random random = new Random();
+
+    @Override
+    public void start(Stage stage) {
+
+        Label dice = new Label("⚀");
+        dice.setFont(new Font(120));
+
+        StackPane root = new StackPane(dice);
+
+        Scene scene = new Scene(root, 600, 400);
+
+        // Lancer l'animation au clic
+        scene.setOnMouseClicked(e -> rollDice(dice));
+
+        stage.setTitle("Animation Dé JavaFX");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void rollDice(Label dice) {
+
+        // Rotation
+        RotateTransition rotate = new RotateTransition(
+                Duration.seconds(1),
+                dice
+        );
+
+        rotate.setByAngle(720);
+
+        // Petit déplacement
+        TranslateTransition move = new TranslateTransition(
+                Duration.seconds(1),
+                dice
+        );
+
+        move.setByX(150);
+        move.setAutoReverse(true);
+        move.setCycleCount(2);
+
+        // Animation combinée
+        ParallelTransition animation =
+                new ParallelTransition(rotate, move);
+
+        animation.setOnFinished(e -> {
+
+            int value = random.nextInt(6) + 1;
+
+            switch (value) {
+                case 1 -> dice.setText("⚀");
+                case 2 -> dice.setText("⚁");
+                case 3 -> dice.setText("⚂");
+                case 4 -> dice.setText("⚃");
+                case 5 -> dice.setText("⚄");
+                case 6 -> dice.setText("⚅");
+            }
+
+            // Remettre la position
+            dice.setTranslateX(0);
+            dice.setRotate(0);
+        });
+
+        animation.play();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
